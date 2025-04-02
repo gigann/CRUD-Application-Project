@@ -1,10 +1,11 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 1337;
 const knex = require('knex')(require('./knexfile.js')[process.env.NODE_ENV || 'development']);
 
-
 app.use(express.json());
+app.use(cors());
 
 // testing/remove these later
 app.get('/', (req, res) => {
@@ -33,7 +34,13 @@ app.get(`/user_account/:id`, (req, res) => {
 });
 
 
-// POST a user account
+// POST a user account (create a new account)
+app.post(`/user_account`, (req, res) => {
+    knex('user_account')
+        .where('id', req.params.id)
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json('The specific user data you are looking for could not be found.'));
+});
 
 
 // GET all items
