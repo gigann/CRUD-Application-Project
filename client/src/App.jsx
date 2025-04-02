@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Router, Route, Routes } from 'react-router-dom';
 
 import './App.css';
@@ -9,10 +9,12 @@ import LoginPage from './components/LoginPage/LoginPage.jsx';
 import InventoryPage from './components/InventoryPage/InventoryPage.jsx';
 import ItemDetailsPage from './components/ItemDetailsPage/ItemDetailsPage.jsx';
 
-function App() {
+import { ThemeContext } from './contexts/ThemeContext.jsx';
 
+function App() {
+  const theme = useContext(ThemeContext);
   return (
-    <>
+    <div className={theme}>
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/create-account' element={<CreateAccountPage />} />
@@ -20,7 +22,7 @@ function App() {
         <Route path='/inventory' element={<InventoryPage />} />
         <Route path='/inventory/:id' element={<ItemDetailsPage />} />
       </Routes>
-    </>
+    </div>
   )
 }
 

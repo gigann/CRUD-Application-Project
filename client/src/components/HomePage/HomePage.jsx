@@ -1,21 +1,25 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LoginContext } from '../../contexts/LoginContext.jsx';
-
+import { LoginContext } from '../../contexts/LoginContext';
 import './HomePage.css';
 
 function HomePage() {
     const navigate = useNavigate();
+
     const loggedIn = useContext(LoginContext);
 
     return (
         <>
             <nav>
-                <button onClick={() => navigate('/create-account')}>Create Account</button>
                 {
                     (loggedIn) ? (
-                        <button onClick={() => navigate('/logout')}>Logout</button>) : (
-                        <button onClick={() => navigate('/login')}>Login</button>
+                        <button onClick={() => {
+                            ;
+                        }}>Logout</button>) : (
+                        <>
+                            <button onClick={() => navigate('/login')}>Login</button>
+                            <button onClick={() => navigate('/create-account')}>Create Account</button>
+                        </>
                     )
                 }
 

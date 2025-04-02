@@ -12,7 +12,17 @@ function CreateAccountPage() {
                 <button onClick={() => navigate(-1)}>Go Back</button>
             </nav>
 
-            <h1>Create Account!</h1>
+            <form>
+                <input type='text' placeholder='First Name' autoComplete='given-name'/>
+                <input type='text' placeholder='Last Name' autoComplete='family-name' />
+                <input type='text' placeholder='Username' autoComplete='username'/>
+                <input type='password' placeholder='Password' autoComplete='new-password' />
+                <input type='button' value='Create Account' onClick={(e) => {
+                    // POST user to DB
+
+                    // login and route to home and/or inventory page
+                }} />
+            </form>
         </>
     )
 }
