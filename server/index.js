@@ -41,11 +41,13 @@ app.post(`/user_account`, (req, res) => {
     const username = req.body.username;
     const plaintext_password = req.body.password;
 
-    // TODO: SALT AND HASH
+    // TODO: SALT AND HASH THE PASSWORD
+
+
     knex('user_account')
-        .insert({first_name: first_name, last_name: last_name, username: username, password: plaintext_password})
-        .then(data => res.status(201).json('User account successfully created'))
-        .catch(err => res.status(500).json(err + 'User account could not be created'));
+        .insert({ first_name: first_name, last_name: last_name, username: username, password: plaintext_password })
+        .then(data => res.status(201).json('User account successfully created.'))
+        .catch(err => res.status(500).json(err + 'User account could not be created.'));
 });
 
 // DELETE a user account
@@ -53,8 +55,8 @@ app.delete(`/user_account/:id`, (req, res) => {
     knex('user_account')
         .where('id', req.params.id)
         .del()
-        .then(data => res.status(200).json('Deleted employee'))
-        .catch(err => res.status(500).json('Failed to delete employee'));
+        .then(data => res.status(204).json('Deleted employee.'))
+        .catch(err => res.status(500).json('Failed to delete employee.'));
 });
 
 
@@ -72,6 +74,19 @@ app.get('/item/:id', (req, res) => {
         .where('id', req.params.id)
         .then(data => res.status(200).json(data))
         .catch(err => res.status(404).json('The item data you are looking for could not be found.'));
+});
+
+// POST a new item
+app.post(`/item`, (req, res) => {
+    const user_id = req.body.user_id;
+    const item_name = req.body.item_name;
+    const description = req.body.description;
+    const quantity = req.body.quantity;
+
+    knex('item')
+        .insert({ user_id: user_id, item_name: item_name, description: description, quantity: quantity })
+        .then(data => res.status(201).json('Item successfully created.'))
+        .catch(err => res.status(500).json(err + 'Item could not be created.'));
 });
 
 
