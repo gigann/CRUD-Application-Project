@@ -46,13 +46,21 @@ app.post(`/register`, async (req, res) => {
 
 
     // ensure the username is unique.
-    const usernameIsTaken = false;
-
+    let usernameIsTaken = false;
 
     await knex('user_account')
-        .insert({ first_name: first_name, last_name: last_name, username: username, password: plaintextPassword })
-        .then(data => res.status(201).json('User account successfully created.'))
-        .catch(err => res.status(500).json('User account could not be created.'));
+        .where({username: username}).then(data => usernameIsTaken = data.length);
+
+    if (!usernameIsTaken) {
+        await knex('user_account')
+            .insert({ first_name: first_name, last_name: last_name, username: username, password: plaintextPassword })
+            .then(data => res.status(201).json('User account successfully created.'))
+            .catch(err => res.status(500).json('User account could not be created.'));
+    }
+    else {
+        res.status(409).json('Username is taken.');
+    }
+
 });
 
 // REMOVE AFTER TESTING
