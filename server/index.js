@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 1337;
 const knex = require('knex')(require('./knexfile.js')[process.env.NODE_ENV || 'development']);
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 app.use(express.json());
 app.use(cors());
@@ -129,27 +129,31 @@ app.delete(`/item/:id`, (req, res) => {
         .catch(err => res.status(500).json('Failed to delete item.'));
 });
 
-// logging in workflow
-// 1. we receive a username/ plaintext password in the response
-// 2. we hash the incoming password and compare to the hash to the stored hash
-// 3. If the hashed password = the stored hash password,
-//    return a successful login in the resposne. (authenticaed)
+// POST user login/authentication
 app.post('/login', async (req, res) => {
     const username = req.body.username;
-    const plaintextPassword = req.body.password;
 
     await knex('user_account')
         .where({ username: username })
-        .where({ password: plaintextPassword })
-        .then(data => {
+        .then(async data => {
             if (data.length > 0) {
-                return res.status(200).json(data);
+                // verify password
+                if (await bcrypt.compare(req.body.password, data[0].password)) {
+                    return res.status(200).json(data);
+                }
+                else {
+                    // intentionally vague
+                    return res.status(404).json('Wrong username or password.');
+                }
+
             }
             else {
-                return res.status(401).json('User could not be authenticated.');
+                // intentionally vague
+                return res.status(404).json('Wrong username or password.');
             }
         })
-        .catch(err => res.status(500).json('User could not log in.'));
+        // intentionally vague
+        .catch(err => res.status(404).json('Wrong username or password.'));
 });
 
 
