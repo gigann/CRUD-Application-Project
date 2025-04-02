@@ -9,8 +9,6 @@ import LoginPage from './components/LoginPage/LoginPage.jsx';
 import InventoryPage from './components/InventoryPage/InventoryPage.jsx';
 import ItemDetailsPage from './components/ItemDetailsPage/ItemDetailsPage.jsx';
 
-
-
 function App() {
 
   return (
