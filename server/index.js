@@ -139,7 +139,7 @@ app.post('/login', async (req, res) => {
             if (data.length > 0) {
                 // verify password
                 if (await bcrypt.compare(req.body.password, data[0].password)) {
-                    return res.status(200).json(data);
+                    return res.status(200).json(data[0]);
                 }
                 else {
                     // intentionally vague

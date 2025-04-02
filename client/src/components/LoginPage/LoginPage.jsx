@@ -1,13 +1,20 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../contexts/UserContext.jsx';
 
 import './LoginPage.css';
 // import { UserContext } from '../../contexts/UserContext.jsx';
+// should set the usercontext userid
+// that should also store it in a cookie for persisting through refreshes
+// cookie should delete itself after a day?
+// or on session end?
+// or if the user presses the logout button.
+
 
 function LoginPage() {
     const navigate = useNavigate();
 
-    const [userID, setUserID] = useState();
+    const [userID, setUserID] = useContext(UserContext);
 
     const login = (username, password) => {
         console.log(username + ' ' + password);
@@ -22,7 +29,17 @@ function LoginPage() {
             })
         })
             .then((res) => res.json())
-            .then((data) => setUserID(data.id));
+            .then((data) => {
+                // successfully logged in
+                if (data.id > 0) {
+                    setUserID(data.id);
+                    navigate('/');
+                }
+                // failed to log in
+                else {
+
+                }
+            });
     }
 
     return (

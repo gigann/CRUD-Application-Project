@@ -1,17 +1,23 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
+import { UserContext } from '../../contexts/UserContext';
 
 function HomePage() {
     const navigate = useNavigate();
+    const [userID, setUserID] = useContext(UserContext);
+
+    const logout = () => {
+        setUserID(0);
+    }
 
     return (
         <>
             <nav>
                 {
-                    (loggedIn) ? (
+                    (userID > 0) ? (
                         <button onClick={() => {
-                            ;
+                            logout();
                         }}>Logout</button>) : (
                         <>
                             <button onClick={() => navigate('/login')}>Login</button>
