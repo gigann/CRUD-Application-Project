@@ -28,7 +28,7 @@ app.get('/user_account', (req, res) => {
 // GET a specific user account based on the user's id
 app.get(`/user_account/:id`, (req, res) => {
     knex('user_account')
-        .where('id', req.params.id)
+        .where({ id: req.params.id })
         .then(data => res.status(200).json(data))
         .catch(err => res.status(404).json('The specific user data you are looking for could not be found.'));
 });
@@ -53,7 +53,7 @@ app.post(`/user_account`, (req, res) => {
 // DELETE a user account
 app.delete(`/user_account/:id`, (req, res) => {
     knex('user_account')
-        .where('id', req.params.id)
+        .where({ id: req.params.id })
         .del()
         .then(data => res.status(204).json('Deleted employee.'))
         .catch(err => res.status(500).json('Failed to delete employee.'));
@@ -71,7 +71,7 @@ app.get('/item', (req, res) => {
 // GET a specific item based on the item's id
 app.get('/item/:id', (req, res) => {
     knex('item')
-        .where('id', req.params.id)
+        .where({ id: req.params.id })
         .then(data => res.status(200).json(data))
         .catch(err => res.status(404).json('The item data you are looking for could not be found.'));
 });
@@ -86,13 +86,24 @@ app.post(`/item`, (req, res) => {
     knex('item')
         .insert({ user_id: user_id, item_name: item_name, description: description, quantity: quantity })
         .then(data => res.status(201).json('Item successfully created.'))
-        .catch(err => res.status(500).json(err + 'Item could not be created.'));
+        .catch(err => res.status(500).json('Item could not be created.'));
 });
 
+// PATCH a specific item
+app.patch(`/item/:id`, (req, res) => {
+    const user_id = req.body.user_id;
+    const item_name = req.body.item_name;
+    const description = req.body.description;
+    const quantity = req.body.quantity;
+
+    knex('item')
+        .where({ id: req.params.id })
+        .update({ user_id: user_id, item_name: item_name, description: description, quantity: quantity })
+        .then(data => res.status(201).json('Item successfully updated.'))
+        .catch(err => res.status(500).json('Item could not be updated.'));
 
 
-// PATCH/PUT a specific item
-
+});
 
 // DELETE an item
 
