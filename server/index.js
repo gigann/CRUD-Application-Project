@@ -17,7 +17,6 @@ app.post('/', (req, res) => {
 
 // end points
 
-// REMOVE AFTER TESTING
 // GET all user accounts
 app.get('/user_account', async (req, res) => {
     await knex('user_account')
@@ -26,7 +25,6 @@ app.get('/user_account', async (req, res) => {
         .catch(err => res.status(404).json('The user data you are looking for could not be found.'));
 });
 
-// REMOVE AFTER TESTING
 // GET a specific user account based on the user's id
 app.get(`/user_account/:id`, async (req, res) => {
     await knex('user_account')
@@ -63,15 +61,14 @@ app.post(`/register`, async (req, res) => {
 
 });
 
-// REMOVE AFTER TESTING
 // DELETE a user account
-// app.delete(`/user_account/:id`, (req, res) => {
-//     knex('user_account')
-//         .where({ id: req.params.id })
-//         .del()
-//         .then(data => res.status(204).json('Deleted employee.'))
-//         .catch(err => res.status(500).json('Failed to delete employee.'));
-// });
+app.delete(`/user_account/:id`, (req, res) => {
+    knex('user_account')
+        .where({ id: req.params.id })
+        .del()
+        .then(data => res.status(204).json('Deleted employee.'))
+        .catch(err => res.status(500).json('Failed to delete employee.'));
+});
 
 
 // GET all items
@@ -138,8 +135,15 @@ app.post('/login', async (req, res) => {
     await knex('user_account')
         .where({ username: username })
         .where({password: plaintextPassword})
-        .then(data => res.status(200).json(data))
-        .catch(err => res.status(401).json('User could not be authenticated.'));
+        .then(data => {
+            if (data.length > 0) {
+                return res.status(200).json(data);
+            }
+            else {
+                return res.status(401).json('User could not be authenticated.');
+            }
+        })
+        .catch(err => res.status(500).json('User could not log in.'));
 });
 
 
