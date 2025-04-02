@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 1337;
 const knex = require('knex')(require('./knexfile.js')[process.env.NODE_ENV || 'development']);
+const bcrypt = require('bcryptjs');
 
 app.use(express.json());
 app.use(cors());
@@ -38,22 +39,27 @@ app.post(`/register`, async (req, res) => {
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const username = req.body.username;
-    const plaintextPassword = req.body.password;
-
-    // TODO: SALT AND HASH THE PASSWORD
-
+    const saltRounds = 12;
 
     // ensure the username is unique.
     let usernameIsTaken = false;
 
     await knex('user_account')
-        .where({username: username}).then(data => usernameIsTaken = data.length);
+        .where({ username: username }).then(data => usernameIsTaken = data.length);
 
     if (!usernameIsTaken) {
-        await knex('user_account')
-            .insert({ first_name: first_name, last_name: last_name, username: username, password: plaintextPassword })
-            .then(data => res.status(201).json('User account successfully created.'))
-            .catch(err => res.status(500).json('User account could not be created.'));
+        await bcrypt.hash(req.body.password, saltRounds)
+            .then(async (hash) => {
+                await knex('user_account')
+                    .insert({ first_name: first_name, last_name: last_name, username: username, password: hash })
+                    .then(data => res.status(201).json('User account successfully created.'))
+                    .catch(err => res.status(500).json('User account could not be created.'));
+            })
+            .catch((err) => {
+                res.status(403).json('Could not salt & hash password.');
+            });
+
+
     }
     else {
         res.status(409).json('Username is taken.');
@@ -134,7 +140,7 @@ app.post('/login', async (req, res) => {
 
     await knex('user_account')
         .where({ username: username })
-        .where({password: plaintextPassword})
+        .where({ password: plaintextPassword })
         .then(data => {
             if (data.length > 0) {
                 return res.status(200).json(data);
