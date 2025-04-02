@@ -19,12 +19,12 @@ Dummy data
 You can login as Mario, Steve, and Simon.
 Here are their usernames and passwords:
 Mario
-username: itsame
+username: smbro
 password: MAR10
 
 Steve
 username: mc_master
-password: 12345
+password: 25565
 
 Simon
 username: vampire_killer

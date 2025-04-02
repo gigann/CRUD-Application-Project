@@ -13,6 +13,7 @@ import { ThemeContext } from './contexts/ThemeContext.jsx';
 
 function App() {
   const theme = useContext(ThemeContext);
+
   return (
     <div className={theme}>
       <Routes>
