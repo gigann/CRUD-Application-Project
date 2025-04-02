@@ -89,8 +89,8 @@ app.post(`/item`, (req, res) => {
         .catch(err => res.status(500).json('Item could not be created.'));
 });
 
-// PATCH a specific item
-app.patch(`/item/:id`, (req, res) => {
+// PUT a specific item
+app.put(`/item/:id`, (req, res) => {
     const user_id = req.body.user_id;
     const item_name = req.body.item_name;
     const description = req.body.description;
