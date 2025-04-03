@@ -30,11 +30,12 @@ function CreateAccountPage() {
                 if (id > 0) {
                     console.log(id);
                     setUserID(id);
-                    navigate('/');
+                    navigate('/personal_inventory');
+                    alert('Your account has been successfully created.');
                 }
                 // failed to make account
                 else {
-
+                    alert('Please try again.');
                 }
             })
             .catch((err) => {
