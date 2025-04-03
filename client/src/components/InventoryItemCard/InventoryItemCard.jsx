@@ -79,7 +79,6 @@ function InventoryItemCard(children) {
         ) : (
             <>
                 <tr className='item-card-viewable' id={children.id} onClick={(e) => {
-                    console.log('clicked');
                         navigate(`/inventory/${children.id}`, {
                             state: {
                                 id: children.id,

@@ -1,3 +1,19 @@
-.edit-button {
+.toggle-edit-button {
     background-color: rgba(150, 50, 50, 255);
+}
+
+table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+tr:nth-child(odd) {
+    background-color: var(--accent-color-1);
+}
+tr:nth-child(even) {
+    background-color: var(--accent-color-1);
+}
+
+th {
+    background-color: var(--accent-color-1);
 }
