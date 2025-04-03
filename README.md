@@ -1,4 +1,4 @@
-# CRUD Project Application
+# CRUD Application Project
 This repo contains the frontend and backend for my Z-Prefix CRUD application.
 
 ## Prerequisites
@@ -79,6 +79,6 @@ This full-stack application allows inventory managers to create accounts, and, o
 |3|`vampire_killer`|`Wallachia1476!`|
 
 ## Additional Notes
-* No .ENV file is necessary.
+* No .ENV file is necessary to run this project. (WIP)
 * Passwords are salted and hashed.
 * User IDs are temporarily stored as cookies.
