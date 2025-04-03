@@ -9,6 +9,10 @@ function ItemDetailsPage() {
 
     return (
         <>
+            <nav>
+                <button onClick={() => navigate(-1)}>Go Back</button>
+            </nav>
+
             {(location.state) ? (
                 <>
                     <h1>{location.state.item_name}</h1>
@@ -23,10 +27,6 @@ function ItemDetailsPage() {
                     <p>The item you are looking for doesn't exist.</p>
                 </>
             )}
-
-            <nav>
-                <button onClick={() => navigate(-1)}>Go Back</button>
-            </nav>
         </>
     )
 }
