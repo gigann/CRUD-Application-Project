@@ -42,12 +42,12 @@ function LoginPage() {
     }
 
     return (
-        <>
+        <div className='login-menu'>
             <nav>
                 <button onClick={() => navigate(-1)}>Go Back</button>
             </nav>
 
-            <form>
+            <form className='login-menu'>
                 <input id='username-input' type='text' placeholder='Username' autoComplete='username' />
                 <input id='password-input' type='password' placeholder='Password' autoComplete='current-password' />
                 <input type='button' value='Login' onClick={(e) => {
@@ -60,7 +60,7 @@ function LoginPage() {
                     // or fail to authenticate
                 }} />
             </form>
-        </>
+        </div>
     )
 }
 

@@ -9,7 +9,8 @@ function HomePage() {
 
     return (
         <>
-            <nav>
+            <h1>Home</h1>
+            <nav className='main-menu'>
                 {
                     (userID > 0) ? (
                         <>
@@ -31,7 +32,6 @@ function HomePage() {
                 <button onClick={() => navigate('/global_inventory')}>View All Inventories</button>
             </nav>
 
-            <h1>Home Page</h1>
             {(userID > 0)?(
                 <p>You are currently logged in.</p>
             ):(

@@ -53,13 +53,13 @@ function UserInventoryPage() {
 
     return (
         <>
+            <h1>My Inventory</h1>
             <nav>
                 <button onClick={() => navigate('/')}>Return Home</button>
             </nav>
 
             {(userID > 0) ? (
                 <>
-                    <h1>My Inventory</h1>
                     <button className='toggle-edit-button' onClick={(e) => {
                         setEditMode(!editMode);
                     }}>{(editMode) ? (
