@@ -30,77 +30,53 @@ Navigate to the `client` directory and run `npm start`. The client will be live 
 This full-stack application allows inventory managers to create accounts, and, once logged in, to create, update, and delete items in their personal inventories. The application also allows inventory managers and visitors to view the inventory of all items.
 ### As an Inventory Manager
 #### Create an Account
-1. On the *home page*, Click the `Login` button.
-2. On the *login page*, enter your `Username` and `Password`.
-3. Click the `login button.`
-4. If successfully authenticated, the inventory manager will be redirected to their *personal inventory page*.
+1. On the *home page*, click the `Create Account` button. This will redirect you to the *registration page*. You cannot create an account if you are already logged in. If necessary, log out by clicking the `Logout` button.
+2. On the *registration page*, enter your `First Name`, `Last Name`,  `Username` and `Password`.
+3. Click the `Create Account` button. You will be notified if your account was successfully registered. User accounts must have unique usernames.
+4. After creating your account, you will be automatically logged in and redirected to the *home page*.
 
 #### Login to an Account
 1. On the *home page*, Click the `Login` button.
 2. On the *login page*, enter your `Username` and `Password`.
 3. Click the `login button.`
-4. If successfully authenticated, the inventory manager will be redirected to their *personal inventory page*.
+4. If successfully authenticated, you will be automatically redirected to your *personal inventory page*.
 
-#### Logout of an Account
-On the *home page*, click the `Logout` button.
+#### View and Edit Your Inventory
+1. On the *home page*, click the `View Personal Inventory` button. This will redirect you to the *personal inventory page*.
+    #### View Details
+    1. On the *personal inventory page*, click an item to view its details.
+    2. Click the `Go Back` button to return to viewing personal items.
+    #### Add a New Item
+    1. On the *personal inventory page*, click the `Enable Edit Mod` button.
+    2. Under the *Add a New Item* section, enter the `item name`, `description`, and `quantity`.
+    3. Click the `Add Item` button to add the item to the database.
+    #### Edit an Item
+    1. On the *personal inventory page*, click the `Enable Edit Mod` button.
+    2. Under the *Edit or Delete Existing Items* section, modify the `item name`, `description`, and `quantity` fields of a particular item.
+    3. To save your changes, click the `Edit Item` button in the same row.
+    #### Delete an Item
+    1. On the *personal inventory page*, click the `Enable Edit Mod` button.
+    2. Under the *Edit or Delete Existing Items* section, click the `Delete Item` button.
 
 #### View All Inventories
-1. On the *home page*, click the `View All Inventories` button. This will redirect the **Inventory Manager** to the *global inventory page*.
-2. On the *global inventory page*, click an item to view its details. This will redirect the **Inventory Manager** to the *item details page*.
-3. On the *item details page*, click the `Go Back` button to return to the *global inventory page*.
+1. On the *home page*, click the `View All Inventories` button. This will redirect you to the *global inventory page*.
+2. On the *global inventory page*, click an item to view its details.
+3. Click the `Go Back` button to return to viewing all items.
 
 ### As a Visitor
 
 #### View All Inventories
-1. On the *home page*, click the `View All Inventories` button. This will redirect the **Visitor** to the *global inventory page*.
-2. On the *global inventory page*, click an item to view its details. This will redirect the **Visitor** to the *item details page*.
+1. On the *home page*, click the `View All Inventories` button. This will redirect you to the *global inventory page*.
+2. On the *global inventory page*, click an item to view its details. This will redirect you to the *item details page*.
 3. On the *item details page*, click the `Go Back` button to return to the *global inventory page*.
 
-### How to
+## Login Information for Seeded Accounts
+| User ID|Username|Password|
+|-|-|-|
+|1|`smbro`|`MAR10`|
+|2|`mc_master`|`25565`|
+|3|`vampire_killer`|`Wallachia1476!`|
 
-
-TODO:
-
-Instructions for spinning up / setting up connection string
-
-Clone or download and extract the zip file.
-
-
-
-//client
-front end: npm start
-
-//server
-back end: npm start
-
-//database
-
-
-Dummy data
-You can login as Mario, Steve, and Simon.
-Here are their usernames and passwords:
-Mario
-username: smbro
-password: MAR10
-
-Steve
-username: mc_master
-password: 25565
-
-Simon
-username: vampire_killer
-password: Wallachia1476!
-
-
-To start up the back-end, in the server directory, run the command `npm start`.
-This will migrate and seed the databases and start up the nodemon server.
-You can also run  `npm run dev` to rollback before migrating and seeding.
-
-
-
-    "start": "knex migrate:latest && knex seed:run && node index.js",
-    "dev": "knex migrate:rollback && knex migrate:latest && knex seed:run && nodemon index.js",
-
-### Implementation Details
+## Additional Features
 * Passwords are salted and hashed.
-* User IDs are temporarily stored as cookies
+* User IDs are temporarily stored as cookies.
