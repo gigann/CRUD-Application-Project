@@ -116,7 +116,7 @@ app.post(`/item`, async (req, res) => {
         .catch(err => res.status(500).json('Item could not be created.'));
 });
 
-// PUT a specific item
+// PUT a specific item (edit item)
 app.put(`/item/:id`, async (req, res) => {
     const user_id = req.body.user_id;
     const item_name = req.body.item_name;
