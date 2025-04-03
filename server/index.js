@@ -52,7 +52,8 @@ app.post(`/register`, async (req, res) => {
             .then(async (hash) => {
                 await knex('user_account')
                     .insert({ first_name: first_name, last_name: last_name, username: username, password: hash })
-                    .then(data => res.status(201).json('User account successfully created.'))
+                    .returning('id')
+                    .then(([id]) => res.status(200).json(id.id)) // return user ID
                     .catch(err => res.status(500).json('User account could not be created.'));
             })
             .catch((err) => {
@@ -139,7 +140,7 @@ app.post('/login', async (req, res) => {
             if (data.length > 0) {
                 // verify password
                 if (await bcrypt.compare(req.body.password, data[0].password)) {
-                    return res.status(200).json(data[0]);
+                    return res.status(200).json(data[0].id); // return user ID
                 }
                 else {
                     // intentionally vague

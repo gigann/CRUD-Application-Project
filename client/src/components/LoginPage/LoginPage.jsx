@@ -17,7 +17,6 @@ function LoginPage() {
     const [userID, setUserID] = useContext(UserContext);
 
     const login = (username, password) => {
-        console.log(username + ' ' + password);
         fetch('http://localhost:1337/login', {
             method: 'POST',
             headers: {
@@ -29,10 +28,10 @@ function LoginPage() {
             })
         })
             .then((res) => res.json())
-            .then((data) => {
+            .then((id) => {
                 // successfully logged in
-                if (data.id > 0) {
-                    setUserID(data.id);
+                if (id > 0) {
+                    setUserID(id);
                     navigate('/');
                 }
                 // failed to log in
