@@ -19,3 +19,6 @@
     width: 10ch;
 }
 
+tr:hover {
+    scale: 1.01;
+}
