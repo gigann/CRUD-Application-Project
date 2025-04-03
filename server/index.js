@@ -86,6 +86,15 @@ app.get('/item', async (req, res) => {
         .catch(err => res.status(404).json('The item data you are looking for could not be found.'));
 });
 
+// GET all items of a specific user ID
+app.get('/item/user/:id', async (req, res) => {
+    await knex('item')
+        .select('*')
+        .where({ user_id: req.params.id })
+        .then(data => res.status(200).json(data))
+        .catch(err => res.status(404).json('The item data from that particular user could not be found.'));
+});
+
 // GET a specific item based on the item's id
 app.get('/item/:id', async (req, res) => {
     await knex('item')

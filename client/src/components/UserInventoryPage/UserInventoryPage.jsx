@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './UserInventoryPage.css';
 import InventoryItemCard from '../InventoryItemCard/InventoryItemCard';
+import { UserContext } from '../../contexts/UserContext.jsx';
+
 
 function UserInventoryPage() {
+    const [userID, setUserID] = useContext(UserContext);
+
     const navigate = useNavigate();
+
+    // displays a list of items made by the user
+    useEffect(() => {
+        fetch(`http://localhost:1337/item/${userID}`)
+
+    }, [userID])
 
     return (
         <>
