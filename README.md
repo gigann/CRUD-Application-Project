@@ -7,14 +7,20 @@ This repo contains the frontend and backend for my Z-Prefix CRUD application.
     - username: postgres
     - password: docker
     - port: 5432:5432
-        - To start the postgres instance, run `$ docker run --name some-pg-docker-name -e POSTGRES_PASSWORD=docker -d -p 5432:5432 postgres`
->For reference, the connection string in the server's knexfile.js is `postgres://postgres:docker@localhost:5432/inventory`
+>To start the postgres instance, run `$ docker run --name some-pg-docker-name -e POSTGRES_PASSWORD=docker -d -p 5432:5432 postgres`
 3. A database named `inventory` in the postgres container
     - To add this database:
         1. `$ docker exec -it postgres-instance-container-id bash`
         2. `# psql -U postgres`
-        3. `\l` and check if a database named inventory exists. If not, then proceed to step 4. Press (q) to close.
         3. `# CREATE DATABASE inventory;`
+4. A `.env` file in the `server` folder with the following contents:
+
+        PG_HOST = localhost
+        PG_USER = postgres
+        PG_PASSWORD = docker
+        PG_DATABASE = inventory
+        PG_PORT = 5432
+
 ## How to Download
 - `git clone https://github.com/gigann/CRUD-Application-Project.git`
 - download and extract the zip.
@@ -79,6 +85,5 @@ This full-stack application allows inventory managers to create accounts, and, o
 |3|`vampire_killer`|`Wallachia1476!`|
 
 ## Additional Notes
-* No .ENV file is necessary to run this project. (WIP)
-* Passwords are salted and hashed.
-* User IDs are temporarily stored as cookies.
+- Passwords are salted and hashed.
+- User IDs are temporarily stored as cookies.
