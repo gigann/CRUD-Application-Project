@@ -79,7 +79,15 @@ function InventoryItemCard(children) {
         ) : (
             <>
                 <tr className='item-card-viewable' id={children.id} onClick={(e) => {
-                    navigate(`/inventory/${children.id}`, { state: children });
+                    console.log('clicked');
+                        navigate(`/inventory/${children.id}`, {
+                            state: {
+                                id: children.id,
+                                user_id: children.user_id,
+                                item_name: children.item_name,
+                                description: children.description,
+                                quantity: children.quantity
+                         } });
                 }}>
                     <th scope='row'>{children.id}</th>
                     <td scope='row'>{children.user_id}</td>
