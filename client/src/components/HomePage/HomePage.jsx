@@ -12,9 +12,14 @@ function HomePage() {
             <nav>
                 {
                     (userID > 0) ? (
-                        <button onClick={() => {
-                            setUserID(0); // logout
-                        }}>Logout</button>) : (
+                        <>
+                            <button onClick={() => {
+                                setUserID(0); // logout
+                            }}>Logout</button>
+
+                            <button onClick={() => navigate('/personal_inventory')}>View Personal Inventory</button>
+                        </>
+                    ) : (
                         <>
                             <button onClick={() => navigate('/login')}>Login</button>
                             <button onClick={() => navigate('/create-account')}>Create Account</button>
@@ -23,7 +28,7 @@ function HomePage() {
                 }
 
 
-                <button onClick={() => navigate('/inventory')}>View Inventory</button>
+                <button onClick={() => navigate('/global_inventory')}>View All Inventories</button>
             </nav>
 
             <h1>Home Page</h1>

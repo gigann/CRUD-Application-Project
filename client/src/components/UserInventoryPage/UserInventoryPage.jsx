@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import './InventoryPage.css';
+import './UserInventoryPage.css';
 import InventoryItemCard from '../InventoryItemCard/InventoryItemCard';
 
-function InventoryPage() {
+function UserInventoryPage() {
     const navigate = useNavigate();
 
     return (
@@ -23,4 +23,4 @@ function InventoryPage() {
     )
 }
 
-export default InventoryPage;
+export default UserInventoryPage;
