@@ -27,10 +27,10 @@ This repo contains the frontend and backend for my Z-Prefix CRUD application.
 
 ## How to Run
 ### Running the Back-End Server
-Navigate to the `server` directory and run `$ npm start`. This will perform migrations, seeds, and start the server. However, if an initial rollback is desired, run `$ npm run dev` instead. The server will be live on `http://localhost:1337`.
+Navigate to the `server` directory and run `$ npm run dev`. This will rollback, migrate, and seed the database, and start the server. However, if only starting the server is desired, run `$ npm start` instead. The server will be live on `http://localhost:1337`.
 
 ### Running the Front-End Client
-Navigate to the `client` directory and run `$ npm start`. The client will be live on `http://localhost:2077`.
+Navigate to the `client` directory and run `$ npm run dev` or `$ npm start`. The client will be live on `http://localhost:2077`.
 
 
 ## How to Use

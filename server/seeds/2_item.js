@@ -1,6 +1,6 @@
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex('item').del()
+  await knex('item').del();
   await knex('item').insert([
     {
       user_id: 1, item_name: 'Super Mushroom', description: 'Turns Mario into Super Mario.', quantity: 3
