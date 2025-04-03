@@ -22,7 +22,7 @@ function GlobalInventoryPage() {
                 <button onClick={() => navigate('/')}>Return Home</button>
             </nav>
 
-            <h1>Global Inventory</h1>
+            <h1>All Inventories</h1>
 
             <table>
                 <thead>

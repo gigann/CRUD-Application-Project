@@ -1,3 +1,5 @@
+This full-stack application allows logged-in inventory managers to create, update, and delete items in their personal inventories. It also allows anyone to view the inventory of all items.
+
 TODO:
 
 Instructions for spinning up / setting up connection string
