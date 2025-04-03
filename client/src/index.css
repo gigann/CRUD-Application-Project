@@ -1,38 +1,11 @@
-/* TODO */
-:root {
-  --bg-color: RGBA(36, 36, 36, 255);
-  --text-color: RGBA(255, 255, 255, 255);
-  --accent-color-1: RGBA(30, 48, 143, 255);
-  --accent-color-2: RGBA(30, 48, 143, 153);
-  --accent-color-3: RGBA(30, 48, 143, 102);
-  --accent-color-4: RGBA(30, 48, 143, 51);
-}
 
-* {
-  width: 0 auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border: none;
-}
-
-button {
-  background-color: var(--accent-color-1);
-}
-
-button:active {
-  translate: (-20px, -20px);
-}
 
 button:hover{
   scale: 1.1;
 }
 
-input {
-  border: 1px solid var(--accent-color-1);
-}
 
-/* :root {
+:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -99,4 +72,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-} */
+}

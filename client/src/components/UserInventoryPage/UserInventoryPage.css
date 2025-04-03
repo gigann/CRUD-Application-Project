@@ -17,3 +17,11 @@ tr:nth-child(even) {
 th {
     background-color: var(--accent-color-1);
 }
+
+form {
+    display: inline;
+}
+
+input {
+    margin: 0px;
+}
