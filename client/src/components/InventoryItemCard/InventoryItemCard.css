@@ -1,0 +1,4 @@
+.item-card-viewable {
+    user-select: none;
+    cursor: pointer;
+}

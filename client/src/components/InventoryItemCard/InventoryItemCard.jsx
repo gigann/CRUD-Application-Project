@@ -14,7 +14,17 @@ function InventoryItemCard(children) {
     }
 
     const deleteItem = () => {
-
+        fetch(`http://localhost:1337/item/${children.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => res)
+            .then(data => {
+                children.setUpdateRender(!children.updateRender);
+            })
+            .catch(err => console.error(err));
     }
 
     return (
@@ -24,21 +34,21 @@ function InventoryItemCard(children) {
                     <input id='item-name-input' type='text' defaultValue={children.item_name}></input>
                     <input id='description-input' type='text' defaultValue={children.description}></input>
                     <input id='quantity-input' type='number' defaultValue={children.quantity}></input>
-                    <button className='edit-item-button' onClick={(e) => {
+                    <input type='button' className='edit-item-button' value='Edit Item' onClick={(e) => {
                         editItem(
                             document.querySelector('#item-name-input').value,
                             document.querySelector('#description-input').value,
                             document.querySelector('#quantity-input').value
                         );
-                    }}>Edit Item</button>
-                    <button className='delete-item-button' onClick={(e) => {
+                    }}/>
+                    <input type='button' className='delete-item-button' value='Delete Item' onClick={(e) => {
                         deleteItem();
-                    }}>Delete Item</button>
+                    }}/>
                 </form>
             </>
         ) : (
             <>
-                <div id={children.id} onClick={(e) => {
+                <div className='item-card-viewable' id={children.id} onClick={(e) => {
                     navigate(`/inventory/${children.id}`, { state: children });
                 }}>
                     <h3>{children.item_name} (x{children.quantity})</h3>

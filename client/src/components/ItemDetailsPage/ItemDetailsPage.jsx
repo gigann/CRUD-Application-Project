@@ -14,13 +14,13 @@ function ItemDetailsPage() {
             </nav>
 
             {(location.state) ? (
-                <>
+                <div>
                     <h1>{location.state.item_name}</h1>
                     <p>{location.state.description}</p>
                     <p>Quantity: {location.state.quantity}</p>
                     <p>Item ID: {location.state.id}</p>
                     <p>User ID: {location.state.user_id}</p>
-                </>
+                </div>
 
             ) : (
                 <><h1>Oops!</h1>

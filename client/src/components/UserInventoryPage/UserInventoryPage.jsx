@@ -23,6 +23,7 @@ function UserInventoryPage() {
             .then((data) => {
                 setUsersItems(data);
             })
+            .catch(err => console.log(err))
 
     }, [updateRender])
 
@@ -97,6 +98,8 @@ function UserInventoryPage() {
                                     description={item.description}
                                     quantity={item.quantity}
                                     editable={true}
+                                    updateRender={updateRender}
+                                    setUpdateRender={setUpdateRender}
                                 />
                             ))}
                         </>
