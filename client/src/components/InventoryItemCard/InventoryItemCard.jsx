@@ -48,38 +48,53 @@ function InventoryItemCard(children) {
     return (
         (children.editable) ? (
             <>
-                <form id={children.id}>
-                    <input id={`item-name-input-${children.id}`} type='text' defaultValue={children.item_name}></input>
-                    <input id={`description-input-${children.id}`} type='text' defaultValue={children.description}></input>
-                    <input id={`quantity-input-${children.id}`} type='number' defaultValue={children.quantity}></input>
-                    <input type='button' className='edit-item-button' value='Edit Item' onClick={(e) => {
-                        editItem(
-                            document.querySelector(`#item-name-input-${children.id}`).value,
-                            document.querySelector(`#description-input-${children.id}`).value,
-                            document.querySelector(`#quantity-input-${children.id}`).value
-                        );
-                    }}/>
-                    <input type='button' className='delete-item-button' value='Delete Item' onClick={(e) => {
-                        deleteItem();
-                    }}/>
-                </form>
+                <tr className='item-card-editable' id={children.id}>
+                    <th scope='row'>{children.id}</th>
+                    <td scope='row'>{children.user_id}</td>
+                    <td scope='row'>
+                        <input id={`item-name-input-${children.id}`} type='text' defaultValue={children.item_name}></input>
+                    </td>
+                    <td scope='row'>
+                        <input id={`description-input-${children.id}`} type='text' defaultValue={children.description}></input>
+                    </td>
+                    <td scope='row'>
+                        <input id={`quantity-input-${children.id}`} type='number' defaultValue={children.quantity}></input>
+                    </td>
+                    <td scope='row'>
+                        <input type='button' className='edit-item-button' value='Edit Item' onClick={(e) => {
+                            editItem(
+                                document.querySelector(`#item-name-input-${children.id}`).value,
+                                document.querySelector(`#description-input-${children.id}`).value,
+                                document.querySelector(`#quantity-input-${children.id}`).value
+                            );
+                        }} />
+                    </td>
+                    <td scope='row'>
+                        <input type='button' className='delete-item-button' value='Delete Item' onClick={(e) => {
+                            deleteItem();
+                        }} />
+                    </td>
+                </tr>
             </>
         ) : (
             <>
-                <div className='item-card-viewable' id={children.id} onClick={(e) => {
+                <tr className='item-card-viewable' id={children.id} onClick={(e) => {
                     navigate(`/inventory/${children.id}`, { state: children });
                 }}>
-                    <h3>{children.item_name} (x{children.quantity})</h3>
+                    <th scope='row'>{children.id}</th>
+                    <td scope='row'>{children.user_id}</td>
+                    <td scope='row'>{children.item_name}</td>
                     {(children.description.length > 100) ? (
-                        <p><i>{children.description.slice(0, 100)}...</i></p>
+                        <td scope='row'>{children.description.slice(0, 100)}...</td>
                     ) : (
-                        <p><i>{children.description}</i></p>
+                        <td scope='row'>{children.description}</td>
                     )}
-                    <p>Item ID: {children.id} | User ID: {children.user_id}</p>
-                </div>
+                    <td scope='row'>{children.quantity}</td>
+                </tr>
             </>
         )
     )
 }
 
 export default InventoryItemCard;
+

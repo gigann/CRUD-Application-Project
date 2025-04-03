@@ -2,3 +2,20 @@
     user-select: none;
     cursor: pointer;
 }
+
+.id-col {
+    width: 10ch;
+}
+.user-id-col {
+    width: 10ch;
+}
+.item-name-col {
+    width: 20ch;
+}
+.description-col {
+    width: 100ch;
+}
+.quantity-col {
+    width: 10ch;
+}
+
