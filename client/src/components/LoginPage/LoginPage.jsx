@@ -32,7 +32,7 @@ function LoginPage() {
                 // successfully logged in
                 if (id > 0) {
                     setUserID(id);
-                    navigate('/');
+                    navigate('/personal_inventory');
                 }
                 // failed to log in
                 else {
