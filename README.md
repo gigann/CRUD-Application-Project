@@ -1,5 +1,5 @@
 # CRUD Project Application
-This repo contains both the front-end and back-end for my CRUD Application Project for the Z-Prefix.
+This repo contains the frontend and backend for my Z-Prefix CRUD application.
 
 ## Prerequisites
 1. A docker postgres image
@@ -9,21 +9,22 @@ This repo contains both the front-end and back-end for my CRUD Application Proje
     - port: 5432:5432
         - To start the postgres instance, run `$ docker run --name some-pg-docker-name -e POSTGRES_PASSWORD=docker -d -p 5432:5432 postgres`
 >For reference, the connection string in the server's knexfile.js is `postgres://postgres:docker@localhost:5432/inventory`
-3. A database named `inventory` in the postgres container.
+3. A database named `inventory` in the postgres container
     - To add this database:
         1. `$ docker exec -it postgres-instance-container-id bash`
         2. `# psql -U postgres`
         3. `\l` and check if a database named inventory exists. If not, then proceed to step 4. Press (q) to close.
         3. `# CREATE DATABASE inventory;`
 ## How to Download
-`git clone https://github.com/gigann/CRUD-Application-Project.git` or download and extract the zip.
+- `git clone https://github.com/gigann/CRUD-Application-Project.git`
+- download and extract the zip.
 
 ## How to Run
 ### Running the Back-End Server
-Navigate to the `server` directory and run `npm start`. This will perform migrations, seeds, and start the server. However, if an initial rollback is desired, run `npm run dev` instead. The server will be live on `http://localhost:1337`.
+Navigate to the `server` directory and run `$ npm start`. This will perform migrations, seeds, and start the server. However, if an initial rollback is desired, run `$ npm run dev` instead. The server will be live on `http://localhost:1337`.
 
 ### Running the Front-End Client
-Navigate to the `client` directory and run `npm start`. The client will be live on `http://localhost:2077`.
+Navigate to the `client` directory and run `$ npm start`. The client will be live on `http://localhost:2077`.
 
 
 ## How to Use
@@ -77,6 +78,7 @@ This full-stack application allows inventory managers to create accounts, and, o
 |2|`mc_master`|`25565`|
 |3|`vampire_killer`|`Wallachia1476!`|
 
-## Additional Features
+## Additional Notes
+* No .ENV file is necessary.
 * Passwords are salted and hashed.
 * User IDs are temporarily stored as cookies.
