@@ -12,6 +12,8 @@ function UserInventoryPage() {
     const [usersItems, setUsersItems] = useState([]);
     const [editMode, setEditMode] = useState(false);
 
+    const [updateRender, setUpdateRender] = useState(false);
+
     const navigate = useNavigate();
 
     // displays a list of items made by the user
@@ -22,11 +24,30 @@ function UserInventoryPage() {
                 setUsersItems(data);
             })
 
-    }, [])
+    }, [updateRender])
 
     // add new items
     const addItem = (itemName, description, quantity) => {
-
+        fetch('http://localhost:1337/item', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                item_name: itemName,
+                user_id: userID,
+                description: description,
+                quantity: quantity
+            })
+        })
+            .then((res) => res.json())
+            .then(data => {
+                setUpdateRender(!updateRender);
+                console.log(data);
+            })
+            .catch((err) => {
+                console.error('Error with adding item: ', error);
+            });
     }
 
     return (
@@ -53,13 +74,18 @@ function UserInventoryPage() {
                                 <input id='item-name-input' type='text' placeholder='Item Name'></input>
                                 <input id='description-input' type='text' placeholder='Description'></input>
                                 <input id='quantity-input' type='number' placeholder='Quantity'></input>
-                                <button className='add-item-button' onClick={(e) => {
+                                <input type='button' className='add-item-button' onClick={(e) => {
                                     addItem(
                                         document.querySelector('#item-name-input').value,
                                         document.querySelector('#description-input').value,
                                         document.querySelector('#quantity-input').value
                                     );
-                                }}>Add Item</button>
+                                    // clear inputs for new items
+                                    document.querySelector('#item-name-input').value = '';
+                                    document.querySelector('#description-input').value = '';
+                                    document.querySelector('#quantity-input').value = '';
+
+                                }}value='Add Item'/>
                             </form>
                             <h3>Edit or Delete Existing Items</h3>
                             {usersItems.map((item) => (
