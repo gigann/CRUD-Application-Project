@@ -45,10 +45,6 @@ function CreateAccountPage() {
 
     return (
         <div>
-            <nav>
-                <button onClick={() => navigate(-1)}>Go Back</button>
-            </nav>
-
             <form className='create-account-menu'>
                 <input id='first-name-input' type='text' placeholder='First Name' autoComplete='given-name' />
                 <input id='last-name-input' type='text' placeholder='Last Name' autoComplete='family-name' />
@@ -62,6 +58,7 @@ function CreateAccountPage() {
                         document.querySelector('#password-input').value
                     )
                 }} />
+                <button type='button' onClick={() => navigate(-1)}>Go Back</button>
             </form>
         </div>
     )

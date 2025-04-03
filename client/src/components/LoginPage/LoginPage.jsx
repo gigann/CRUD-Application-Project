@@ -36,17 +36,13 @@ function LoginPage() {
                 }
                 // failed to log in
                 else {
-
+                    alert('Wrong username or password!');
                 }
             });
     }
 
     return (
-        <div className='login-menu'>
-            <nav>
-                <button onClick={() => navigate(-1)}>Go Back</button>
-            </nav>
-
+        <div>
             <form className='login-menu'>
                 <input id='username-input' type='text' placeholder='Username' autoComplete='username' />
                 <input id='password-input' type='password' placeholder='Password' autoComplete='current-password' />
@@ -56,9 +52,8 @@ function LoginPage() {
                         `${document.querySelector('#username-input').value}`,
                         `${document.querySelector('#password-input').value}`
                     );
-
-                    // or fail to authenticate
                 }} />
+                <button type='button' onClick={() => navigate(-1)}>Go Back</button>
             </form>
         </div>
     )
