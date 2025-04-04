@@ -27,10 +27,10 @@ This repo contains the frontend and backend for my Z-Prefix CRUD application.
 
 ## How to Run
 ### Running the Back-End Server
-Navigate to the `server` directory and run `$ npm install` to install dependencies. Next, run `$ npm run dev`. This will rollback, migrate, and seed the database, and start the server. However, if only starting the server is desired, run `$ npm start` instead. The server will be live on `http://localhost:1337`.
+Navigate to the `server` directory and run `$ npm install` to install dependencies. Next, run `$ npm run dev`. This will rollback, migrate, and seed the database, and start the server. However, if only starting the server is desired, run `$ npm start` instead. The server will be live on `http://localhost:1337/`.
 
 ### Running the Front-End Client
-Navigate to the `client` directory and run `$ npm install` to install dependencies. Next, run `$ npm run dev` or `$ npm start`. The client will be live on `http://localhost:2077`.
+Navigate to the `client` directory and run `$ npm install` to install dependencies. Next, run `$ npm run dev` or `$ npm start`. The client will be live on `http://localhost:2077/`.
 
 ## How to Use
 This full-stack application allows inventory managers to create accounts, and, once logged in, to create, update, and delete items in their personal inventories. The application also allows inventory managers and visitors to view the inventory of all items.
