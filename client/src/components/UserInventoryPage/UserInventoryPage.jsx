@@ -44,7 +44,6 @@ function UserInventoryPage() {
             .then((res) => res.json())
             .then(data => {
                 setUpdateRender(!updateRender);
-                console.log(data);
             })
             .catch((err) => {
                 console.error('Error with adding item: ', error);
@@ -88,72 +87,77 @@ function UserInventoryPage() {
 
                                 }} value='Add Item' />
                             </form>
-                            <h3>Edit or Delete Existing Items</h3>
 
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th scope='col'>ID</th>
-                                        <th scope='col'>User ID</th>
-                                        <th scope='col'>Item Name</th>
-                                        <th scope='col'>Description</th>
-                                        <th scope='col'>Quantity</th>
-                                        <th scope='col'>Edit</th>
-                                        <th scope='col'>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {usersItems.map((item) => (
-                                        <InventoryItemCard
-                                            key={item.id}
-                                            id={item.id}
-                                            user_id={item.user_id}
-                                            item_name={item.item_name}
-                                            description={item.description}
-                                            quantity={item.quantity}
-                                            editable={true}
-                                            updateRender={updateRender}
-                                            setUpdateRender={setUpdateRender}
-                                        />
-                                    ))}
-                                </tbody>
-                            </table>
+                            {(usersItems.length > 0) ? (
+                                <>
+                                    <h3>Edit or Delete Existing Items</h3>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th scope='col'>ID</th>
+                                                <th scope='col'>User ID</th>
+                                                <th scope='col'>Item Name</th>
+                                                <th scope='col'>Description</th>
+                                                <th scope='col'>Quantity</th>
+                                                <th scope='col'>Edit</th>
+                                                <th scope='col'>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {usersItems.map((item) => (
+                                                <InventoryItemCard
+                                                    key={item.id}
+                                                    id={item.id}
+                                                    user_id={item.user_id}
+                                                    item_name={item.item_name}
+                                                    description={item.description}
+                                                    quantity={item.quantity}
+                                                    editable={true}
+                                                    updateRender={updateRender}
+                                                    setUpdateRender={setUpdateRender}
+                                                />
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </>
+                            ) : (
+                                <p><i>Your inventory is currently empty.</i></p>
+                            )}
                         </>
                     ) : (
-                        <>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th scope='col'>ID</th>
-                                        <th scope='col'>User ID</th>
-                                        <th scope='col'>Item Name</th>
-                                        <th scope='col'>Description</th>
-                                        <th scope='col'>Quantity</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {usersItems.map((item) => (
-                                        <InventoryItemCard
-                                            key={item.id}
-                                            id={item.id}
-                                            user_id={item.user_id}
-                                            item_name={item.item_name}
-                                            description={item.description}
-                                            quantity={item.quantity}
-                                            editable={false}
-                                            updateRender={updateRender}
-                                            setUpdateRender={setUpdateRender}
-                                        />
-                                    ))}
-                                </tbody>
-                            </table>
-
-
-
-                        </>
+                        (usersItems.length > 0) ? (
+                            <>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th scope='col'>ID</th>
+                                            <th scope='col'>User ID</th>
+                                            <th scope='col'>Item Name</th>
+                                            <th scope='col'>Description</th>
+                                            <th scope='col'>Quantity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {usersItems.map((item) => (
+                                            <InventoryItemCard
+                                                key={item.id}
+                                                id={item.id}
+                                                user_id={item.user_id}
+                                                item_name={item.item_name}
+                                                description={item.description}
+                                                quantity={item.quantity}
+                                                editable={false}
+                                                updateRender={updateRender}
+                                                setUpdateRender={setUpdateRender}
+                                            />
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </>
+                        ) : (
+                            <p><i>Your inventory is currently empty.</i></p>
+                        )
                     )}
-
-
                 </>
             ) : (
                 <>
