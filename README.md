@@ -39,7 +39,7 @@ This full-stack application allows inventory managers to create accounts, and, o
 1. On the *home page*, click the `Create Account` button. This will redirect you to the *registration page*. You cannot create an account if you are already logged in. If necessary, log out by clicking the `Logout` button.
 2. On the *registration page*, enter your `First Name`, `Last Name`,  `Username` and `Password`.
 3. Click the `Create Account` button. You will be notified if your account was successfully registered. User accounts must have unique usernames.
-4. After creating your account, you will be automatically logged in and redirected to the *home page*.
+4. After creating your account, you will be automatically logged in and redirected to the *personal inventory page*.
 
 #### Login to an Account
 1. On the *home page*, Click the `Login` button.
