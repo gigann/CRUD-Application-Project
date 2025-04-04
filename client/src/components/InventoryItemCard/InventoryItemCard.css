@@ -19,6 +19,11 @@
     width: 10ch;
 }
 
-tr:hover {
+thead {
+    user-select: none;
+}
+
+table tbody>tr:hover {
     scale: 1.01;
+    background-color: RGBA(255, 255, 255, 0.25);
 }

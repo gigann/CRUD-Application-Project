@@ -8,14 +8,14 @@ table, th, td {
 }
 
 tr:nth-child(odd) {
-    background-color: var(--accent-color-1);
+    background-color: RGBA(255, 255, 255, 0.15);
 }
 tr:nth-child(even) {
-    background-color: var(--accent-color-1);
+    background-color: RGBA(255, 255, 255, 0.05);
 }
 
-th {
-    background-color: var(--accent-color-1);
+thead, th {
+    background-color: RGBA(0, 0, 0, 1.0);
 }
 
 form {

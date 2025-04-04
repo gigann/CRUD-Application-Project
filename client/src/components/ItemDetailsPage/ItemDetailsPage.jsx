@@ -8,7 +8,7 @@ function ItemDetailsPage() {
     const location = useLocation();
 
     return (
-        <>
+        <div className='item-details'>
             {(location.state) ? (
                 <div>
                     <h1>{location.state.item_name}</h1>
@@ -26,7 +26,7 @@ function ItemDetailsPage() {
             <nav>
                 <button onClick={() => navigate(-1)}>Go Back</button>
             </nav>
-        </>
+        </div>
     )
 }
 
