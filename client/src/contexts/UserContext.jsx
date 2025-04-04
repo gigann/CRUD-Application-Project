@@ -15,7 +15,7 @@ export function UserProvider({ children }) {
         let expiry = new Date();
         expiry.setHours(24, 0, 0, 0);
         let expires = `expires=${expiry.toUTCString()}`;
-        console.log(userID);
+        // console.log(userID);
         document.cookie = `crud_application_project_user_id=${userID};${expires}`;
     }, [userID])
 
