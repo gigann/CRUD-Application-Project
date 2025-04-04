@@ -48,17 +48,17 @@ This full-stack application allows inventory managers to create accounts, and, o
 4. If successfully authenticated, you will be automatically redirected to your *personal inventory page*.
 
 #### View and Edit Your Inventory
-1. On the *home page*, click the `View Personal Inventory` button. This will redirect you to the *personal inventory page*.
+1. On the *home page*, click the `View Personal Inventory` button. This will redirect you to your *personal inventory page*.
     #### View Details
     1. On the *personal inventory page*, click an item to view its details.
     2. Click the `Go Back` button to return to viewing personal items.
     #### Add a New Item
     1. On the *personal inventory page*, click the `Enable Edit Mod` button.
-    2. Under the *Add a New Item* section, enter the `item name`, `description`, and `quantity`.
+    2. Under the *Add a New Item* section, enter the `Item Name`, `Description`, and `Quantity`.
     3. Click the `Add Item` button to add the item to the database.
     #### Edit an Item
     1. On the *personal inventory page*, click the `Enable Edit Mod` button.
-    2. Under the *Edit or Delete Existing Items* section, modify the `item name`, `description`, and `quantity` fields of a particular item.
+    2. Under the *Edit or Delete Existing Items* section, modify the `Item Name`, `Description`, and `Quantity` fields of a particular item.
     3. To save your changes, click the `Edit Item` button in the same row.
     #### Delete an Item
     1. On the *personal inventory page*, click the `Enable Edit Mod` button.
@@ -76,7 +76,7 @@ This full-stack application allows inventory managers to create accounts, and, o
 2. On the *global inventory page*, click an item to view its details. This will redirect you to the *item details page*.
 3. On the *item details page*, click the `Go Back` button to return to the *global inventory page*.
 
-## Login Information for Seeded Accounts
+## Login Information for Seeded Inventory Manager Accounts
 | User ID|Username|Password|
 |-|-|-|
 |1|`smbro`|`MAR10`|
